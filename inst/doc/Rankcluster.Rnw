@@ -103,6 +103,7 @@
 \renewcommand{\uwave}[1]{#1}
 
 \begin{document}
+\SweaveOpts{concordance=TRUE}
 
 \begin{frontmatter}
 
@@ -122,6 +123,7 @@
 \address{$^{2}$MODAL team, Inria Lille-Nord Europe}
 
 
+
 \begin{abstract}
 \textit{Rankcluster} is the first \textbf{R} package proposing both modelling and clustering tools for ranking data, potentially multivariate and partial. 
 Ranking data are modelled by the Insertion Sorting Rank (\textsc{isr}) model, which is a meaningful model parametrized by a central ranking and a dispersion parameter. A conditional independence assumption allows to take into account multivariate rankings, and clustering is performed by the mean of mixtures of multivariate \textsc{isr} model. The clusters' parameters (central rankings and dispersion parameters) help the practitioners in the interpretation of the clustering.
@@ -135,6 +137,8 @@ model-based clustering, multivariate rankings, partial rankings, \textbf{R}, Ran
 
 \end{frontmatter}
 
+
+\textbf{All results from sections \ref{sec:Rankcluster} and \ref{sec:Examples} were obtained with Rankcluster 0.91.6. Since Rankcluster 0.92, the data format has changed: ranks must be provided in their ranking representation (and not ordering representation). This change was made to manage tied objects.}
 
 \section{Introduction}
 
@@ -217,6 +221,10 @@ To the best of our knowledge, there exists only two packages dedicated to the an
 
 \section[Overview of the Rankcluster functions]{Overview of the \textit{Rankcluster} functions}
 \label{sec:Rankcluster}
+
+\textbf{This section presents functions from Rankcluster 0.91.6. Since Rankcluster 0.92, the data format has changed: ranks (\texttt{data} parameter) must be provided in their ranking representation\footnote{The \textit{ranking} representation $x^{-1}=(x_1^{-1},\ldots,x_m^{-1})$ contains the ranks assigned to the objects, and means that Object $\mathcal{O}_i$ is in the $x_i^{-1}$th position ($i=1,\ldots,m$). Notice that $x$ is associated to the ordering representation.} (and not ordering representation). This change was made to manage tied objects.}
+
+
 This section presents, firstly, the main function \texttt{rankclust()} which performs cluster analysis, and, secondly, several companion functions which can be helpful for additional ranking data analysis.
 
 \subsection[Main function]{The main function: \texttt{rankclust()}}
@@ -282,6 +290,9 @@ In addition to the main function, \texttt{rankclust()}, several companion functi
 
 \section[Rankcluster through examples]{\textit{Rankcluster} through examples}
 \label{sec:Examples}
+
+\textbf{All results from this section were obtained with Rankcluster 0.91.6. Since Rankcluster 0.92, the data format has changed: ranks must be provided in their ranking representation (and not ordering representation). This change was made to manage tied objects.}
+
 This section illustrates the use of the \texttt{rankclust()} function on two real datasets. The first one, \texttt{words}, is a well-known dataset in ranking study, due to \cite{Fli1986}, which consists of words associations by students. 
 The second one, \texttt{big4} consists of the rankings of the Big Four of English Football (Manchester United, Liverpool, Arsenal and Chelsea) according to the Premier League results and to their UEFA coefficients between 1993 and 2013 (see Appendix \ref{sec:big4}).
 % The second one, \textit{Eurovision}, presented in \cite{Jac2012b}, consists of the votes of European countries during the Eurovision Song Contest. Both datasets are available in the \textit{Rankcluster} package, as well as the three other datasets analysed and described in \cite{Jac2012b}: \texttt{APA, quiz, sports}.
