@@ -1,9 +1,9 @@
 Package: Rankcluster
 Type: Package
 Title: Model-Based Clustering for Multivariate Partial Ranking Data
-Version: 0.94.2
-Date: 2020-02-20
-Authors@R: c(person("Quentin", "Grimonprez", role = c("aut", "cre"), email = "quentin.grimonprez@inria.fr"),
+Version: 0.94.4
+Date: 2020-10-03
+Authors@R: c(person("Quentin", "Grimonprez", role = c("aut", "cre"), email = "quentingrim@yahoo.fr"),
               person("Julien", "Jacques", role = "aut"),
               person("Christophe", "Biernacki", role = "aut"))
 Description: Implementation of a model-based clustering algorithm for
@@ -18,18 +18,18 @@ Description: Implementation of a model-based clustering algorithm for
 License: GPL (>= 2)
 Copyright: Inria - Université de Lille
 BugReports: https://github.com/modal-inria/Rankcluster/issues/
-Depends: R (>= 2.10), methods
-Imports: Rcpp
+Depends: R (>= 2.10)
+Imports: Rcpp, methods
 LinkingTo: Rcpp, RcppEigen
-Suggests: knitr
+Suggests: knitr, rmarkdown
 VignetteBuilder: knitr
 Encoding: UTF-8
-RoxygenNote: 7.0.2
+RoxygenNote: 7.1.1
 NeedsCompilation: yes
-Packaged: 2020-02-20 10:12:26 UTC; grimonprez
+Packaged: 2020-10-06 12:57:24 UTC; quentin
 Author: Quentin Grimonprez [aut, cre],
   Julien Jacques [aut],
   Christophe Biernacki [aut]
-Maintainer: Quentin Grimonprez <quentin.grimonprez@inria.fr>
+Maintainer: Quentin Grimonprez <quentingrim@yahoo.fr>
 Repository: CRAN
-Date/Publication: 2020-02-20 10:30:02 UTC
+Date/Publication: 2020-10-06 15:20:08 UTC

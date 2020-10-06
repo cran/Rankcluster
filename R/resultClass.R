@@ -158,18 +158,18 @@ setClass(
 
 #' @title Getter method for rankclust output
 #'
-#' @description This is overloading of square braces to extract values of various
+#' @description Extract values of various
 #' slots of the output from the function \code{\link{rankclust}}.
 #'
 #' @param x object from which to extract element(s) or in which to replace element(s).
-#' @param i the number of cluster of the element we want to extract.
-#'
-# ' @rdname [-methods
-# ' @aliases [,Rankclust-method
+#' @param i the number of cluster of the element we want to extract or "bic", "icl", "ll"
+#' @param j,drop not used 
+#' 
+#' @export
 setMethod(
   f = "[",
-  signature = "Rankclust",
-  definition = function(x, i) {
+  signature = signature(x = "Rankclust"),
+  definition = function(x, i, j, drop) {
     if (x@convergence)
     {
       if (is.numeric(i))
@@ -234,9 +234,7 @@ setMethod(
 #'
 #' @param object output object from \code{\link{rankclust}}.
 #' @param ... Not used.
-#'
-#' @rdname summary-methods
-#' @aliases summary,Rankclust-method
+#' @export
 setMethod(
   f = "summary",
   signature = "Rankclust",
@@ -341,7 +339,7 @@ setMethod(
       cat("\n******************************************************************\n")
     }
     else
-      cat("\nNo convergence. Please retry\n")
+      cat("No convergence. Please retry\n")
 
   }
 )
@@ -387,14 +385,20 @@ setMethod(
   f = "show",
   signature = "Rankclust",
   definition = function(object) {
-    for (i in object@K)
+    if(object@convergence)
     {
-      cat("\n******************************************************************\n")
-      cat("Number of clusters:", i)
-      cat("\n******************************************************************\n")
-      show(object@results[[which(object@K == i)]])
-      cat("\n******************************************************************\n")
-
+      for (i in object@K)
+      {
+        cat("\n******************************************************************\n")
+        cat("Number of clusters:", i)
+        cat("\n******************************************************************\n")
+        show(object@results[[which(object@K == i)]])
+        cat("\n******************************************************************\n")
+        
+      }
+    }else{
+      cat("Algorithm did not converge.\n")
     }
+
   }
 )
