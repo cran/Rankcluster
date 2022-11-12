@@ -22,24 +22,26 @@ rankclust(
 }
 \arguments{
 \item{data}{a matrix in which each row is a ranking (partial or not; for partial ranking,
-missing elements must be 0 or NA. Tied are replaced by the lowest position they share). For multivariate rankings, the rankings of each dimension are
-placed end to end in each row. The data must be in ranking notation (see Details or
+missing elements must be 0 or NA. Tied are replaced by the lowest position they share). For multivariate rankings,
+the rankings of each dimension are placed end to end in each row. The data must be in ranking notation (see Details or
 \link{convertRank} functions).}
 
-\item{m}{a vector composed of the sizes of the rankings of each dimension (default value is the number of column of the matrix data).}
+\item{m}{a vector composed of the sizes of the rankings of each dimension (default value is the number of column of the
+matrix data).}
 
 \item{K}{an integer or a vector of integer with the number of clusters.}
 
 \item{criterion}{criterion "bic" or "icl", criterion to minimize for selecting the number of clusters.}
 
-\item{Qsem}{the total number of iterations for the SEM algorithm (defaut value=40).}
+\item{Qsem}{the total number of iterations for the SEM algorithm (default value=40).}
 
 \item{Bsem}{burn-in period for SEM algorithm (default value=10).}
 
 \item{RjSE}{a vector containing, for each dimension, the number of iterations of the Gibbs sampler
 used both in the SE step for partial rankings and for the presentation orders generation (default value=mj(mj-1)/2).}
 
-\item{RjM}{a vector containing, for each dimension, the number of iterations of the Gibbs sampler used in the  M step (default value=mj(mj-1)/2)}
+\item{RjM}{a vector containing, for each dimension, the number of iterations of the Gibbs sampler used in the  M step
+(default value=mj(mj-1)/2)}
 
 \item{Ql}{number of iterations of the Gibbs sampler
 for estimation of log-likelihood (default value=100).}
@@ -50,26 +52,30 @@ for estimation of log-likelihood (default value=100).}
 
 \item{run}{number of runs of the algorithm for each value of K.}
 
-\item{detail}{boolean, if TRUE, time and others informations will be print during the process (default value FALSE).}
+\item{detail}{boolean, if TRUE, time and others information will be print during the process (default value FALSE).}
 }
 \value{
-An object of class rankclust (See \code{\link{Output-class}} and \code{\link{Rankclust-class}}).
-If the output object is named \code{res}. You can access the result by res[number of groups]@slotName where \code{slotName} is an element of the class Output.
+An object of class Rankclust (See \code{\link{Output-class}} and \code{\link{Rankclust-class}}).
+If the output object is named \code{res}. You can access the result by res[number of groups]@slotName where
+\code{slotName} is an element of the class Output.
 }
 \description{
-This functions estimates a clustering of ranking data, potentially multivariate, partial and containing tied, based on a mixture of multivariate ISR model [2].
+This functions estimates a clustering of ranking data, potentially multivariate, partial and containing tied,
+based on a mixture of multivariate ISR model [2].
 By specifying only one cluster, the function performs a modelling of the ranking data using the multivariate ISR model.
-The estimation is performed thanks to a SEM-Gibbs algorithm in the general case.
+The estimation is performed thanks to a SEM-Gibbs algorithm.
 }
 \details{
-The ranks have to be given to the package in the ranking notation (see \link{convertRank} function), with the following convention:
+The ranks have to be given to the package in the ranking notation (see \link{convertRank} function), with the following
+convention:
 
 - missing positions are replaced by 0
 
-- tied are replaced by the lowest position they share"
+- tied are replaced by the lowest position they share
 
+See the vignette dataFormat for mode details (\code{RShowDoc("dataFormat", package = "Rankcluster")}).
 
-  The ranking representation r=(r_1,...,r_m) contains the
+The ranking representation r=(r_1,...,r_m) contains the
 ranks assigned to the objects, and means that the ith
 object is in r_ith position.
 
@@ -88,8 +94,7 @@ result is r = (2, 3, 1).
 data(big4)
 result <- rankclust(big4$data, K = 2, m = big4$m, Ql = 200, Bl = 100, maxTry = 2)
 
-if(result@convergence)
-{ 
+if(result@convergence) {
   summary(result)
 
   partition <- result[2]@partition
@@ -98,9 +103,11 @@ if(result@convergence)
 
 }
 \references{
-[1] C.Biernacki and J.Jacques (2013), A generative model for rank data based on sorting algorithm, Computational Statistics and Data Analysis, 58, 162-176.
+[1] C.Biernacki and J.Jacques (2013), A generative model for rank data based on sorting algorithm,
+Computational Statistics and Data Analysis, 58, 162-176.
 
-[2] J.Jacques and C.Biernacki (2012), Model-based clustering for multivariate partial ranking data, Inria Research Report n 8113.
+[2] J.Jacques and C.Biernacki (2012), Model-based clustering for multivariate partial ranking data,
+Inria Research Report n 8113.
 }
 \seealso{
 See \code{\link{Output-class}} and \code{\link{Rankclust-class}} for available output.
